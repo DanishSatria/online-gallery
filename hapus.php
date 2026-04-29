@@ -1,17 +1,11 @@
 <?php
 include 'config.php';
 $id = $_GET['id'];
-$query = "SELECT file_path FROM gallery WHERE id = $id";
-$result = mysqli_query($conn, $query);
-$data = mysqli_fetch_assoc($result);
-if ($data) {
-    // Hapus file gambar
-    $file_path = "uploads/" . $data['file_path'];
-    if (file_exists($file_path)) {
-        unlink($file_path);
-    }
-    // Hapus dari database
-    mysqli_query($conn, "DELETE FROM gallery WHERE id = $id");
-}
+
+// Ambil nama file sebelum datanya dihapus
+$data = mysqli_fetch_array(mysqli_query($conn, "SELECT sampul FROM buku WHERE id=$id"));
+unlink("assets/uploads/" . $data['sampul']); // Hapus file fisik
+
+mysqli_query($conn, "DELETE FROM buku WHERE id=$id");
 header("Location: index.php");
 ?>
