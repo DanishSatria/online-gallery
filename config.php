@@ -1,7 +1,7 @@
 <?php
-$host = '10.132.15.76/25'; // atau alamat VM Anda
-$user = 'root';      // sesuaikan dengan user MariaDB
-$pass = 'danish';          // password MariaDB Anda
+$host = 'localhost'; // atau alamat VM Anda
+$user = 'admin123';      // sesuaikan dengan user MariaDB
+$pass = 'admin123';          // password MariaDB Anda
 $db   = 'db_gallery';
 
 $conn = mysqli_connect($host, $user, $pass, $db);
